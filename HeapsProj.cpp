@@ -30,6 +30,7 @@ struct Patient{
 // insert
 // extractMax
 // print_heap
+// search_patient
 class Heaps{//max Heaps
 private:
     Patient* arr;
@@ -134,6 +135,17 @@ public:
                 cout<<"No patient found\n";
         }
     }
+    void search_patient(string name){
+        for(int i = 0;i<counter;i++){
+            if(arr[i].name == name){
+                cout<<"Patient found\n";
+                cout<<"Name: "<<arr[i].name<<"\n";
+                cout<<"Priority: "<<arr[i].priority<<"\n";
+                return;
+            }
+        }
+        cout<<"Patient not found\n";
+    }
 };
 int main()
 {
@@ -143,7 +155,8 @@ int main()
         cout<<"1- Add patient\n";
         cout<<"2- Extract patient\n";
         cout<<"3- Print patients\n";
-        cout<<"4- Exit\n";
+        cout<<"4- Search for patient\n";
+        cout<<"5- Exit\n";
         int choice;
         cin>>choice;
         if(choice == 1){
@@ -170,6 +183,12 @@ int main()
             h.print_heap();
         }
         else if(choice == 4){
+            string name;
+            cout<<"Enter patient name: ";
+            cin>>name;
+            h.search_patient(name);
+        }
+        else if(choice == 5){
             break;
         }
     }
